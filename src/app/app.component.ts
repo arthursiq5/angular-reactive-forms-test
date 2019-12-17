@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Validacoes } from './Validacoes';
 
 @Component({
   selector: 'app-root',
@@ -29,17 +30,23 @@ export class AppComponent implements OnInit{
       ])],
       email: ['', Validators.compose([Validators.email])],
       cpf: ['', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validacoes.ValidaCpf
       ])],
       nascimento: ['', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validacoes.MaiorQue18Anos
       ])],
       senha: ['', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(12)
       ])],
       confirmarSenha: ['', Validators.compose([
         Validators.required
       ])]
+    }, {
+      validators: Validacoes.SenhasCombinam
     });
   }
 }
