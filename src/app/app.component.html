@@ -1,4 +1,4 @@
-<form [formGroup]="formularioDeUsuario" (ngSubmit)="enviarDados()">
+<form [formGroup]="formulario" (ngSubmit)="enviarDados()">
   <div>
     <label for="nome">Nome: </label>
     <input type="text" formControlName="nome">
@@ -25,18 +25,18 @@
   </div>
 
   <div>
-    <label for="confirmarSenha">Nome: </label>
+    <label for="confirmarSenha">Confirmar senha: </label>
     <input type="password" formControlName="confirmarSenha">
   </div>
 
   <br>
   <div>
-    <button [disabled]="!formularioDeUsuario.valid">Enviar dados</button>
+    <button [disabled]="!formulario.valid">Enviar dados</button>
   </div>
 
   <br>
   <br>
 
-  <div>{{ formularioDeUsuario.value | json}}</div>
-  <div>{{ formularioDeUsuario.valid | json }}</div>
+  <div>{{ formulario.value | json}}</div>
+  <div>{{ formulario.valid | json }}</div>
 </form>
