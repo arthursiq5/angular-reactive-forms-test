@@ -49,4 +49,28 @@ export class AppComponent implements OnInit{
       validators: Validacoes.SenhasCombinam
     });
   }
+
+  get nome() {
+    return this.formulario.get('nome');
+  }
+
+  get email() {
+    return this.formulario.get('email');
+  }
+
+  get cpf() {
+    return this.formulario.get('cpf');
+  }
+
+  get nascimento() {
+    return this.formulario.get('nascimento');
+  }
+
+  get senha() {
+    return this.formulario.get('senha');
+  }
+
+  get confirmarSenha() {
+    return this.formulario.get('confirmarSenha');
+  }
 }
