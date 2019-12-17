@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +22,24 @@ export class AppComponent implements OnInit{
 
   criarFormulario() {
     this.formulario = this.formBuilder.group({
-      nome: [''],
-      email: [''],
-      cpf: [''],
-      nascimento: [''],
-      senha: [''],
-      confirmarSenha: ['']
+      nome: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(100)
+      ])],
+      email: ['', Validators.compose([Validators.email])],
+      cpf: ['', Validators.compose([
+        Validators.required
+      ])],
+      nascimento: ['', Validators.compose([
+        Validators.required
+      ])],
+      senha: ['', Validators.compose([
+        Validators.required
+      ])],
+      confirmarSenha: ['', Validators.compose([
+        Validators.required
+      ])]
     });
   }
 }
