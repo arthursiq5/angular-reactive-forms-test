@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Validacoes } from './Validacoes';
+import { Usuario } from './usuario';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,20 @@ export class AppComponent implements OnInit{
     this.criarFormulario();
   }
 
-  enviarDados(){
-    console.log(this.formulario.value);
+  enviarDados() {
+    const dadosFormulario = this.formulario.value;
+
+    const usuario = new Usuario(
+      dadosFormulario.nome,
+      dadosFormulario.email,
+      dadosFormulario.cpf,
+      dadosFormulario.nascimento,
+      dadosFormulario.senha
+    );
+
+    alert(`O usuário ${usuario.nome} foi cadastrado com sucesso. \n Dados: ${JSON.stringify(usuario)}`);
+
+    this.formulario.reset();
   }
 
   criarFormulario() {
