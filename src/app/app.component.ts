@@ -19,6 +19,9 @@ export class AppComponent implements OnInit{
   }
 
   enviarDados() {
+    if(!this.formulario.valid)
+      return;
+
     const dadosFormulario = this.formulario.value;
 
     const usuario = new Usuario(
@@ -59,7 +62,8 @@ export class AppComponent implements OnInit{
         Validators.required
       ])]
     }, {
-      validators: Validacoes.SenhasCombinam
+      validators: Validacoes.SenhasCombinam,
+      updateOn: 'submit'
     });
   }
 
